@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imageView"
@@ -18,7 +18,7 @@
             app:srcCompat="@android:drawable/ic_menu_gallery" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/repoName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
@@ -31,22 +31,22 @@
             tools:text="@string/repo_name" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/authorName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/repoName"
+            app:layout_constraintTop_toBottomOf="@+id/repoName"
             tools:text="Author : Owner's Name" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/repoDescription"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="@+id/authorName"
+            app:layout_constraintTop_toBottomOf="@+id/authorName"
             tools:text="@string/repo_description"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
