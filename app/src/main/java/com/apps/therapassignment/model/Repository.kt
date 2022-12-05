@@ -1,6 +1,6 @@
 package com.apps.therapassignment.model
 
-data class RepoModelItem(
+data class Repository(
     val allow_forking: Boolean,
     val archive_url: String,
     val archived: Boolean,
