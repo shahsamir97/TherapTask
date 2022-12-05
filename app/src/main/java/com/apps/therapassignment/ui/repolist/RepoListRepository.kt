@@ -4,7 +4,6 @@ import com.apps.therapassignment.network.GitRepoApiService
 
 class RepoListRepository(private val apiService: GitRepoApiService) {
 
-    suspend fun getFacebookRepos(){
-        apiService.getFacebookRepos()
-    }
+    suspend fun getFacebookRepos() = apiService.getFacebookRepos()
+
 }

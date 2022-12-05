@@ -7,7 +7,7 @@ import com.apps.therapassignment.databinding.RepoLayoutBinding
 import com.apps.therapassignment.model.Repository
 import com.bumptech.glide.Glide
 
-class RepoListAdapter(private val repoList: ArrayList<Repository>) :
+class RepoListAdapter(private var repoList: ArrayList<Repository>) :
     RecyclerView.Adapter<RepoListAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: RepoLayoutBinding) : RecyclerView.ViewHolder(binding.root)
@@ -29,4 +29,9 @@ class RepoListAdapter(private val repoList: ArrayList<Repository>) :
     }
 
     override fun getItemCount(): Int = repoList.size
+
+    fun updateData(data: ArrayList<Repository>){
+        repoList = data
+        notifyDataSetChanged()
+    }
 }
