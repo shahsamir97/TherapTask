@@ -3,6 +3,7 @@ package com.apps.therapassignment.ui.repolist
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.apps.therapassignment.R
 import com.apps.therapassignment.databinding.RepoLayoutBinding
 import com.apps.therapassignment.model.Repository
 import com.bumptech.glide.Glide
@@ -23,6 +24,7 @@ class RepoListAdapter(private var repoList: ArrayList<Repository>) :
                 repoName.text = repo.name
                 authorName.text = repo.owner?.login
                 repoDescription.text = repo.description
+                if (repo.fork) cardLayout.setBackgroundResource(R.drawable.rounded_highlighted_corner)
                 Glide.with(imageView.context).load(repo.owner?.avatar_url).into(imageView)
             }
         }
