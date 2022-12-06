@@ -30,7 +30,7 @@ class RepoListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initUi()
         viewModel.repoList.observe(viewLifecycleOwner) {
-            adapter.updateData(it)
+            adapter.updateData(it as ArrayList)
         }
     }
 

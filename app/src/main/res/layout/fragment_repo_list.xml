@@ -10,6 +10,9 @@
         android:id="@+id/repoList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="@dimen/layout_padding"
+        android:backgroundTint="@android:color/darker_gray"
+        android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/repo_layout"
         tools:itemCount="10"/>

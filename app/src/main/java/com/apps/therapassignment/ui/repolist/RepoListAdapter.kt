@@ -21,9 +21,9 @@ class RepoListAdapter(private var repoList: ArrayList<Repository>) :
         with(holder.binding){
             (repoList[position]).let { repo ->
                 repoName.text = repo.name
-                authorName.text = repo.owner.login
+                authorName.text = repo.owner?.login
                 repoDescription.text = repo.description
-                Glide.with(imageView.context).load(repo.owner.avatar_url)
+                Glide.with(imageView.context).load(repo.owner?.avatar_url).into(imageView)
             }
         }
     }

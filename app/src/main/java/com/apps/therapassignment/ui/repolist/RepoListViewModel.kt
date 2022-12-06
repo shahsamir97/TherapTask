@@ -9,8 +9,8 @@ import kotlinx.coroutines.launch
 
 class RepoListViewModel(private val repo: RepoListRepository): ViewModel() {
 
-    private val _repoList = MutableLiveData<ArrayList<Repository>>()
-    val repoList: LiveData<ArrayList<Repository>>
+    private val _repoList = MutableLiveData<List<Repository>>()
+    val repoList: LiveData<List<Repository>>
     get() = _repoList
 
     init {
