@@ -9,6 +9,10 @@ import kotlinx.coroutines.launch
 
 class RepoListViewModel(private val repo: RepoListRepository): ViewModel() {
 
+    private val _showMessage = MutableLiveData<String>()
+    val showMessage: LiveData<String>
+    get() = _showMessage
+
     private val _repoList = MutableLiveData<List<Repository>>()
     val repoList: LiveData<List<Repository>>
     get() = _repoList
@@ -19,8 +23,13 @@ class RepoListViewModel(private val repo: RepoListRepository): ViewModel() {
 
     private fun fetchFacebookRepos(){
         viewModelScope.launch {
-           val response = repo.getFacebookRepos()
-            _repoList.value = response
+            try {
+                val response = repo.getFacebookRepos()
+                _repoList.value = response
+            }catch (e: java.lang.Exception){
+                e.printStackTrace()
+                _showMessage.value = "Something went wrong!Please Check internet Connection"
+            }
         }
     }
 }
