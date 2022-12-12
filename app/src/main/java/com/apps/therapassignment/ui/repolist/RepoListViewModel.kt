@@ -31,7 +31,7 @@ class RepoListViewModel(private val repo: RepoListRepository): ViewModel() {
                 val repoIds = response.map { it.id }.toIntArray()
                 withContext(Dispatchers.IO){
                     val notes = repo.getNotesByIds(repoIds)
-                    _repoList.value = Pair(response, notes)
+                    _repoList.postValue(Pair(response, notes))
                 }
             }catch (e: java.lang.Exception){
                 e.printStackTrace()

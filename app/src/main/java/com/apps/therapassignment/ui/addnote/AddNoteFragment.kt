@@ -28,5 +28,8 @@ class AddNoteFragment : Fragment() {
     private fun initUi(){
         val noteText = requireArguments().getString("note")
         if (noteText != null) binding.noteEditText.setText(noteText)
+        binding.saveButton.setOnClickListener {
+            viewModel.addNote(binding.noteEditText.text.toString())
+        }
     }
 }

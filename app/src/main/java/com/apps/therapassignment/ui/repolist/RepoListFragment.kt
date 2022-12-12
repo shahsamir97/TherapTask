@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.apps.therapassignment.MyApplication
 import com.apps.therapassignment.R
-import com.apps.therapassignment.database.Note
 import com.apps.therapassignment.databinding.FragmentRepoListBinding
 import com.apps.therapassignment.network.ServiceGenerator
 
@@ -55,5 +54,4 @@ class RepoListFragment : Fragment() {
         }
         binding.repoList.adapter = adapter
     }
-
 }
