@@ -4,8 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.apps.therapassignment.database.Note
 import com.apps.therapassignment.model.Repository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class RepoListViewModel(private val repo: RepoListRepository): ViewModel() {
 
@@ -13,8 +16,8 @@ class RepoListViewModel(private val repo: RepoListRepository): ViewModel() {
     val showMessage: LiveData<String>
     get() = _showMessage
 
-    private val _repoList = MutableLiveData<List<Repository>>()
-    val repoList: LiveData<List<Repository>>
+    private val _repoList = MutableLiveData<Pair<List<Repository>, List<Note>>>()
+    val repoList: LiveData<Pair<List<Repository>, List<Note>>>
     get() = _repoList
 
     init {
@@ -25,7 +28,11 @@ class RepoListViewModel(private val repo: RepoListRepository): ViewModel() {
         viewModelScope.launch {
             try {
                 val response = repo.getFacebookRepos()
-                _repoList.value = response
+                val repoIds = response.map { it.id }.toIntArray()
+                withContext(Dispatchers.IO){
+                    val notes = repo.getNotesByIds(repoIds)
+                    _repoList.value = Pair(response, notes)
+                }
             }catch (e: java.lang.Exception){
                 e.printStackTrace()
                 _showMessage.value = "Something went wrong!Please Check internet Connection"

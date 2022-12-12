@@ -4,4 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="repo_name">Repo Name</string>
     <string name="repo_description">Repo description</string>
+    <string name="write_note_here">Write note here</string>
 </resources>

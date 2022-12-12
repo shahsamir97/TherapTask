@@ -5,15 +5,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.apps.therapassignment.R
+import androidx.fragment.app.viewModels
+import com.apps.therapassignment.MyApplication
+import com.apps.therapassignment.databinding.FragmentAddNoteBinding
 
 class AddNoteFragment : Fragment() {
+
+    private lateinit var binding: FragmentAddNoteBinding
+    private val viewModel: AddNoteViewModel by viewModels {
+        AddNoteViewModelFactory(requireArguments().getInt("noteId"),AddNoteRepo((requireActivity().application as MyApplication).db.notesDao()))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_note, container, false)
+        binding = FragmentAddNoteBinding.inflate(inflater, container, false)
+        initUi()
+        return binding.root
+    }
+
+    private fun initUi(){
+        val noteText = requireArguments().getString("note")
+        if (noteText != null) binding.noteEditText.setText(noteText)
     }
 }

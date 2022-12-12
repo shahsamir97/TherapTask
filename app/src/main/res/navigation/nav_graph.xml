@@ -9,10 +9,22 @@
         android:id="@+id/repoListFragment"
         android:name="com.apps.therapassignment.ui.repolist.RepoListFragment"
         android:label="fragment_repo_list"
-        tools:layout="@layout/fragment_repo_list" />
+        tools:layout="@layout/fragment_repo_list" >
+        <action
+            android:id="@+id/action_repoListFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="com.apps.therapassignment.ui.addnote.AddNoteFragment"
         android:label="fragment_add_note"
-        tools:layout="@layout/fragment_add_note" />
+        tools:layout="@layout/fragment_add_note" >
+        <argument
+            android:name="noteId"
+            app:argType="integer" />
+        <argument
+            android:name="note"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>
