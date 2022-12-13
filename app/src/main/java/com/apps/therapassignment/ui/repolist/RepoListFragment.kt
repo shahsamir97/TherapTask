@@ -32,7 +32,6 @@ class RepoListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRepoListBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
         return binding.root
     }
 
@@ -40,18 +39,24 @@ class RepoListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initUi()
-        viewModel.repoList.observe(viewLifecycleOwner) {
-            adapter.updateData(it.first as ArrayList, it.second as ArrayList)
-        }
-        viewModel.showMessage.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-        }
+        setUpObservers()
+        viewModel.fetchFacebookRepos()
     }
 
     private fun initUi() {
         adapter = RepoListAdapter {
-           findNavController().navigate(R.id.action_repoListFragment_to_addNoteFragment, bundleOf("noteId" to it))
+           findNavController().navigate(R.id.action_repoListFragment_to_addNoteFragment, bundleOf("note" to it))
         }
         binding.repoList.adapter = adapter
+    }
+
+    private fun setUpObservers() {
+        viewModel.repoList.observe(viewLifecycleOwner) {
+            adapter.updateData(it.first as ArrayList, it.second as ArrayList)
+        }
+
+        viewModel.showMessage.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
     }
 }

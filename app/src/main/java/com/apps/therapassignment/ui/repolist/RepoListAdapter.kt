@@ -1,6 +1,7 @@
 package com.apps.therapassignment.ui.repolist
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.apps.therapassignment.R
@@ -9,7 +10,7 @@ import com.apps.therapassignment.databinding.RepoLayoutBinding
 import com.apps.therapassignment.model.Repository
 import com.bumptech.glide.Glide
 
-class RepoListAdapter(val onClickItem:(repoId: Int) -> Unit) :
+class RepoListAdapter(val onClickItem:(note: Note) -> Unit) :
     RecyclerView.Adapter<RepoListAdapter.ViewHolder>() {
 
     private var notes : ArrayList<Note> = ArrayList()
@@ -30,7 +31,13 @@ class RepoListAdapter(val onClickItem:(repoId: Int) -> Unit) :
                 repoDescription.text = repo.description
                 if (repo.fork) cardLayout.setBackgroundResource(R.drawable.rounded_highlighted_corner)
                 Glide.with(imageView.context).load(repo.owner?.avatar_url).into(imageView)
-                this.root.setOnClickListener { onClickItem(repo.id) }
+
+                val note = notes.find { it.repoId == repo.id }
+                with(noteTextView){
+                    visibility = if (note != null) View.VISIBLE else View.GONE
+                    text = note?.note
+                }
+                this.root.setOnClickListener { onClickItem(note?: Note(repoId = repo.id, null)) }
             }
         }
     }

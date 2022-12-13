@@ -20,11 +20,8 @@ class RepoListViewModel(private val repo: RepoListRepository): ViewModel() {
     val repoList: LiveData<Pair<List<Repository>, List<Note>>>
     get() = _repoList
 
-    init {
-        fetchFacebookRepos()
-    }
 
-    private fun fetchFacebookRepos(){
+     fun fetchFacebookRepos(){
         viewModelScope.launch {
             try {
                 val response = repo.getFacebookRepos()

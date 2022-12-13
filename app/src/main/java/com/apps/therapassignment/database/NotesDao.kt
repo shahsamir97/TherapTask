@@ -10,7 +10,7 @@ import androidx.room.Update
 interface NotesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertNote(note: Note)
+    fun insertNote(note: Note) : Long
 
     @Query("SELECT * FROM note WHERE repoId IN (:repoIds)")
     fun loadAllNotesByIds(repoIds: IntArray): List<Note>

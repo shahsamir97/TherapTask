@@ -6,4 +6,5 @@
     <string name="repo_description">Repo description</string>
     <string name="write_note_here">Write note here</string>
     <string name="save">Save</string>
+    <string name="note_about_repo">Note about repo</string>
 </resources>
