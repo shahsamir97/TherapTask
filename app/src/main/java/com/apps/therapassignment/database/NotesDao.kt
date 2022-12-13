@@ -2,13 +2,14 @@ package com.apps.therapassignment.database
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 
 @Dao
 interface NotesDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNote(note: Note)
 
     @Query("SELECT * FROM note WHERE repoId IN (:repoIds)")
