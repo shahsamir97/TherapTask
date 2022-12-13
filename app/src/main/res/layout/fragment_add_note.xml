@@ -13,6 +13,7 @@
         android:layout_height="0dp"
         android:hint="@string/write_note_here"
         android:inputType="textMultiLine"
+        android:gravity="top"
         app:layout_constraintBottom_toTopOf="@+id/saveButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
