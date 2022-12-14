@@ -2,7 +2,6 @@ fun main() {
     val scanner = java.util.Scanner(System.`in`)
     val countryA = scanner.nextLine()
     val countryB = scanner.nextLine()
-    println(countryB + " " + countryA)
     val matchedChar = bannerProblem(countryA, countryB)
     println(matchedChar)
 }
