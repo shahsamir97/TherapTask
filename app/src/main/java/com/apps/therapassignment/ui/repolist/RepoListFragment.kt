@@ -18,6 +18,7 @@ class RepoListFragment : Fragment() {
 
     lateinit var binding: FragmentRepoListBinding
     lateinit var adapter: RepoListAdapter
+
     private val viewModel: RepoListViewModel by viewModels {
         RepoListViewModelFactory(
             RepoListRepository(
@@ -47,6 +48,7 @@ class RepoListFragment : Fragment() {
         adapter = RepoListAdapter {
            findNavController().navigate(R.id.action_repoListFragment_to_addNoteFragment, bundleOf("note" to it))
         }
+
         binding.repoList.adapter = adapter
     }
 
